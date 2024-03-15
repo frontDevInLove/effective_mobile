@@ -1,0 +1,21 @@
+.nav{
+  height: 50px;
+  display: flex;
+  align-items: center;
+
+  & > *{
+    cursor: pointer;
+
+    &:not(:first-child){
+      @apply ml-4
+    }
+
+    &.active{
+      transition: none;
+      color: var(--mdc-text-button-label-text-color);
+      cursor: default;
+      background: none;
+      box-shadow: none;
+    }
+  }
+}
