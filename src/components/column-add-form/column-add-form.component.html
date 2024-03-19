@@ -1,0 +1,37 @@
+<div class="Column">
+  <div [hidden]="showForm" (click)="openForm(true)">
+    <div class="Column-text">
+      <mat-icon>add</mat-icon> <span>Добавить еще одну колонку</span>
+    </div>
+  </div>
+
+  <form
+    class="Column-addColumnForm"
+    [hidden]="!showForm"
+    [formGroup]="columnForm"
+    (ngSubmit)="save()"
+  >
+    <input
+      class="Column-input"
+      type="text"
+      placeholder="Название колонки..."
+      formControlName="name"
+    />
+
+    <div class="Column-buttons">
+      <div class="Column-add">
+        <button mat-raised-button color="primary">Добавить список</button>
+      </div>
+
+      <button
+        type="submit"
+        mat-icon-button
+        class="close-button"
+        aria-label="Закрыть"
+        (click)="openForm(false)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>
