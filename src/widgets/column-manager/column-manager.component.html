@@ -6,10 +6,12 @@
           <div class="Col-name">
             <app-rename-column
               [columnName]="column.name"
-              (onChange)="renameColumn(column, $event)"
+              (onChange)="update(column, $event)"
             />
           </div>
-          <div class="Col-menu">...</div>
+          <div class="Col-menu">
+            <app-ellipsis-menu (onDelete)="remove(column)" />
+          </div>
         </div>
         <div class="Col-container">
           <ng-content></ng-content>
@@ -20,6 +22,6 @@
   }
 
   <div class="ColumnManager-col">
-    <app-column-add-form (onSave)="addColumn($event)" />
+    <app-column-add-form (onSave)="create($event)" />
   </div>
 </div>

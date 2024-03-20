@@ -1,0 +1,9 @@
+<button mat-icon-button [matMenuTriggerFor]="menu" class="small-icon-button">
+  <mat-icon>more_horiz</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="delete()">
+    <mat-icon>delete</mat-icon>
+    <span>Удалить</span>
+  </button>
+</mat-menu>

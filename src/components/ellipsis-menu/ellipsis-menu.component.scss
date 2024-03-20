@@ -1,0 +1,28 @@
+.small-icon-button {
+  $size: 40px;
+
+  width: $size !important;
+  height: $size !important;
+  padding: 0px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  & > *[role="img"] {
+    width: $size;
+    height: $size;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: $size;
+      height: $size;
+    }
+  }
+
+  .mat-mdc-button-touch-target {
+    width: $size !important;
+    height: $size !important;
+  }
+}

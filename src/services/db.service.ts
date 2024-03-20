@@ -1,4 +1,5 @@
-import Dexie, { Table } from 'dexie';
+import Dexie, { liveQuery, Table } from 'dexie';
+import { of, switchMap } from 'rxjs';
 
 export interface Column {
   id?: number;
@@ -15,8 +16,22 @@ export class DbService extends Dexie {
     });
   }
 
+  create(name: string) {
+    dbService.columns.add({ name });
+  }
+
   update(column: Column, name: string) {
     this.columns.update(column.id!, { name });
+  }
+
+  remove(column: Column) {
+    this.columns.delete(column.id!);
+  }
+
+  getColumns() {
+    return of(null).pipe(
+      switchMap(() => liveQuery(() => this.columns.toArray())),
+    );
   }
 }
 

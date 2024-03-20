@@ -5,25 +5,34 @@ import { AsyncPipe } from '@angular/common';
 import { Column, dbService } from '@services/db.service';
 import { of, switchMap } from 'rxjs';
 import { RenameColumnComponent } from '@components/rename-column/rename-column.component';
+import { EllipsisMenuComponent } from '@components/ellipsis-menu/ellipsis-menu.component';
 
 @Component({
   selector: 'app-column-manager',
   standalone: true,
-  imports: [ColumnAddFormComponent, AsyncPipe, RenameColumnComponent],
+  imports: [
+    ColumnAddFormComponent,
+    AsyncPipe,
+    RenameColumnComponent,
+    EllipsisMenuComponent,
+  ],
   templateUrl: './column-manager.component.html',
   styleUrl: './column-manager.component.scss',
 })
 export class ColumnManagerComponent {
-  public columns$ = of(null).pipe(
-    switchMap(() => liveQuery(() => dbService.columns.toArray())),
-  );
+  public columns$ = dbService.getColumns();
+
   constructor() {}
 
-  addColumn(name: string) {
-    dbService.columns.add({ name });
+  create(name: string) {
+    dbService.create(name);
   }
 
-  renameColumn(column: Column, name: string) {
+  update(column: Column, name: string) {
     dbService.update(column, name);
+  }
+
+  remove(column: Column) {
+    dbService.remove(column);
   }
 }
