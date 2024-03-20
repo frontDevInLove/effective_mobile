@@ -1,4 +1,8 @@
 <div class="ColumnManager">
+  @for (column of columns$ | async; track column.name) {
+    <div class="">{{ column.name }}</div>
+  }
+
   <div class="ColumnManager-col">
     <app-column-add-form (onSave)="addColumn($event)" />
   </div>
