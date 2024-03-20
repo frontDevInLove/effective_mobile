@@ -28,6 +28,7 @@
       "@layouts/*": ["./src/layouts/*"],
       "@components/*": ["./src/components/*"],
       "@services/*": ["./src/services/*"],
+      "@directives/*": ["./src/directives/*"],
     }
   },
   "angularCompilerOptions": {

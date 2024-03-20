@@ -1,0 +1,19 @@
+<form class="ColumnName" [formGroup]="columnForm" (ngSubmit)="save()">
+  <div [hidden]="isChangeMode" (click)="activateField(true)">
+    <div class="ColumnName-description">
+      {{ columnName }}
+    </div>
+  </div>
+
+  <div [hidden]="!isChangeMode">
+    <input
+      (blur)="save()"
+      #nameField
+      appSelectOnFocus
+      class="Input"
+      type="text"
+      formControlName="name"
+      placeholder="Название колонки..."
+    />
+  </div>
+</form>

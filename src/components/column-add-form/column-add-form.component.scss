@@ -1,27 +1,25 @@
-.Column{
-  &-text{
+.Column {
+  &-text {
     @apply bg-emerald-400 p-2 rounded-lg text-white cursor-pointer flex items-center;
     @apply hover:bg-emerald-500;
 
-    span{
+    span {
       @apply ml-2;
     }
   }
 
-  &-addColumnForm{
+  &-addColumnForm {
     @apply bg-emerald-400 p-2 rounded-lg text-white text-center;
     @apply hover:bg-emerald-500;
   }
 
-  &-input{
-    @apply text-black border-2 border-emerald-400 p-2 rounded-lg w-full focus:outline-none focus:border-emerald-500 transition-colors;
+  &-buttons {
+    @apply flex items-center justify-between mt-2;
   }
 
-  &-buttons{
-    @apply  flex items-center justify-between mt-2;
+  &-add {
   }
 
-  &-add{}
-
-  &-exit{}
+  &-exit {
+  }
 }

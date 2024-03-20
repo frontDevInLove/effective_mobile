@@ -1,0 +1,8 @@
+.ColumnName {
+  &-description {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    @apply p-2;
+  }
+}

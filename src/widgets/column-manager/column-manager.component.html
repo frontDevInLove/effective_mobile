@@ -1,6 +1,22 @@
 <div class="ColumnManager">
   @for (column of columns$ | async; track column.name) {
-    <div class="">{{ column.name }}</div>
+    <div class="ColumnManager-col">
+      <div class="Col">
+        <div class="Col-header">
+          <div class="Col-name">
+            <app-rename-column
+              [columnName]="column.name"
+              (onChange)="renameColumn(column, $event)"
+            />
+          </div>
+          <div class="Col-menu">...</div>
+        </div>
+        <div class="Col-container">
+          <ng-content></ng-content>
+        </div>
+        <div class="Col-footer">+ Добавить карточку</div>
+      </div>
+    </div>
   }
 
   <div class="ColumnManager-col">

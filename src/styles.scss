@@ -1,8 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.Helper {
+  outline: solid 1px deeppink;
+
+  & > * {
+    outline: solid 1px darkgreen;
+  }
+}
+
+.Input {
+  @apply text-black border-2 border-emerald-400 p-2 rounded-lg w-full focus:outline-none focus:border-emerald-500 transition-colors;
+}
