@@ -15,6 +15,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { SelectOnFocusDirective } from '@directives/select-on-focus.directive';
+import { EscKeyDirective } from '@directives/esc-key.directive';
 
 /**
  * Компонент для переименования столбца.
@@ -22,7 +23,12 @@ import { SelectOnFocusDirective } from '@directives/select-on-focus.directive';
 @Component({
   selector: 'app-rename-column',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, SelectOnFocusDirective],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    SelectOnFocusDirective,
+    EscKeyDirective,
+  ],
   templateUrl: './rename-column.component.html',
   styleUrl: './rename-column.component.scss',
 })

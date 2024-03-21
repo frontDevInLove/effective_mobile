@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { ColumnAddFormComponent } from '@components/column-add-form/column-add-form.component';
-import { liveQuery } from 'dexie';
 import { AsyncPipe } from '@angular/common';
 import { Column, dbService } from '@services/db.service';
-import { of, switchMap } from 'rxjs';
 import { RenameColumnComponent } from '@components/rename-column/rename-column.component';
 import { EllipsisMenuComponent } from '@components/ellipsis-menu/ellipsis-menu.component';
+import { ColumnComponent } from '../../features/column/column.component';
 
 @Component({
   selector: 'app-column-manager',
@@ -15,24 +14,30 @@ import { EllipsisMenuComponent } from '@components/ellipsis-menu/ellipsis-menu.c
     AsyncPipe,
     RenameColumnComponent,
     EllipsisMenuComponent,
+    ColumnComponent,
   ],
   templateUrl: './column-manager.component.html',
   styleUrl: './column-manager.component.scss',
 })
 export class ColumnManagerComponent {
   public columns$ = dbService.getColumns();
+  public cards$ = dbService.getCards();
 
   constructor() {}
 
-  create(name: string) {
-    dbService.create(name);
+  createColumn(name: string) {
+    dbService.createColumn(name);
   }
 
-  update(column: Column, name: string) {
-    dbService.update(column, name);
+  updateColumn({ column, newName }: { column: Column; newName: string }) {
+    dbService.updateColumn(column, newName);
   }
 
-  remove(column: Column) {
-    dbService.remove(column);
+  removeColumn(column: Column) {
+    dbService.removeColumn(column);
+  }
+
+  createCard({ column, name }: { column: Column; name: string }) {
+    dbService.createCard(column, name);
   }
 }

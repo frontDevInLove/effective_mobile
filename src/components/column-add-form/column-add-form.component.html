@@ -1,7 +1,15 @@
-<div class="Column">
+<div
+  class="Column"
+  (appClickOutside)="openForm(false)"
+  (appEscKey)="openForm(false)"
+  [ngClass]="{
+    'Column--transparent': mode === 'Transparent',
+    'Column--green': mode === 'Green'
+  }"
+>
   <div [hidden]="showForm" (click)="openForm(true)">
     <div class="Column-text">
-      <mat-icon>add</mat-icon> <span>Добавить еще одну колонку</span>
+      <mat-icon>add</mat-icon> <span>{{ addItemText }}</span>
     </div>
   </div>
 
@@ -12,15 +20,16 @@
     (ngSubmit)="save()"
   >
     <input
+      #FieldName
       class="Input"
       type="text"
-      placeholder="Название колонки..."
+      [placeholder]="inputPlaceholder"
       formControlName="name"
     />
 
     <div class="Column-buttons">
       <div class="Column-add">
-        <button mat-raised-button color="primary">Добавить список</button>
+        <button mat-raised-button color="primary">{{ buttonText }}</button>
       </div>
 
       <button

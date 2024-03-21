@@ -1,7 +1,37 @@
 .Column {
+  &--transparent {
+    .Column-text {
+      @apply bg-gray-300;
+      @apply hover:bg-gray-200;
+    }
+
+    .Column-addColumnForm {
+      @apply p-0;
+    }
+
+    .Input {
+      @apply shadow-md;
+    }
+  }
+
+  &--green {
+    .Column-text {
+      @apply text-white bg-emerald-400;
+      @apply hover:bg-emerald-500;
+    }
+
+    .Column-addColumnForm {
+      @apply bg-emerald-400 text-white;
+      @apply hover:bg-emerald-500;
+    }
+
+    .Input {
+      @apply border-emerald-400;
+    }
+  }
+
   &-text {
-    @apply bg-emerald-400 p-2 rounded-lg text-white cursor-pointer flex items-center;
-    @apply hover:bg-emerald-500;
+    @apply p-2 rounded-lg cursor-pointer flex items-center;
 
     span {
       @apply ml-2;
@@ -9,12 +39,15 @@
   }
 
   &-addColumnForm {
-    @apply bg-emerald-400 p-2 rounded-lg text-white text-center;
-    @apply hover:bg-emerald-500;
+    @apply p-2 rounded-lg  text-center;
   }
 
   &-buttons {
-    @apply flex items-center justify-between mt-2;
+    @apply flex items-center mt-2;
+
+    & > :not(:first-child) {
+      @apply ml-2;
+    }
   }
 
   &-add {

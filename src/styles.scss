@@ -22,5 +22,5 @@ body {
 }
 
 .Input {
-  @apply text-black border-2 border-emerald-400 p-2 rounded-lg w-full focus:outline-none focus:border-emerald-500 transition-colors;
+  @apply text-black border-2 p-2 rounded-lg w-full focus:outline-none transition-colors;
 }

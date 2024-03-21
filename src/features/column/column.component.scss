@@ -1,0 +1,23 @@
+.Col {
+  @apply bg-gray-300 rounded-lg;
+
+  &-header,
+  &-container,
+  &-footer {
+    @apply p-2;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-name {
+    width: 100%;
+  }
+
+  &-footer {
+    text-align: center;
+  }
+}

@@ -1,0 +1,27 @@
+<div class="Col">
+  <div class="Col-header">
+    <div class="Col-name">
+      <app-rename-column
+        [columnName]="column.name"
+        (onChange)="updateColumn(column, $event)"
+      />
+    </div>
+    <div class="Col-menu">
+      <app-ellipsis-menu (onDelete)="removeColumn(column)" />
+    </div>
+  </div>
+
+  <div class="Col-container">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="Col-footer">
+    <app-column-add-form
+      (onSave)="createCard($event)"
+      [mode]="'Transparent'"
+      [inputPlaceholder]="'Ввести заголовок для этой карточки'"
+      [addItemText]="'Добавить карточку'"
+      [buttonText]="'Добавить карточку'"
+    ></app-column-add-form>
+  </div>
+</div>
