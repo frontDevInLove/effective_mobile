@@ -4,4 +4,10 @@
   &-col {
     width: 2 * 272px;
   }
+
+  &-card {
+    &:not(:first-child) {
+      @apply mt-2;
+    }
+  }
 }

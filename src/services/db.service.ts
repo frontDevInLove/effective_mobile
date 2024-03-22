@@ -73,6 +73,10 @@ export class DbService extends Dexie {
       {} as { [key in Card['columnId']]: Card[] },
     );
   }
+
+  updateCard(card: Card, name: string) {
+    this.cards.update(card.id!, { name });
+  }
 }
 
 export const dbService = new DbService();

@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "buttons";
 
 html,
 body {
@@ -16,6 +17,10 @@ body {
 .Helper {
   outline: solid 1px deeppink;
 
+  & * {
+    outline: solid 1px #eebe74;
+  }
+
   & > * {
     outline: solid 1px darkgreen;
   }
@@ -23,4 +28,8 @@ body {
 
 .Input {
   @apply text-black border-2 p-2 rounded-lg w-full focus:outline-none transition-colors;
+}
+
+.small-icon-button {
+  @include small-icon-button(40px);
 }

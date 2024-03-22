@@ -10,8 +10,11 @@
         @if (cards$ | async; as cards) {
           @if (cards[column.id!]) {
             @for (card of cards[column.id!]; track card.id) {
-              <div class="">
-                {{ card.name }}
+              <div class="ColumnManager-card">
+                <app-column-card
+                  [card]="card"
+                  (onCardUpdate)="updateCard($event)"
+                />
               </div>
             }
           }

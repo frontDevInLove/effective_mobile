@@ -1,0 +1,53 @@
+<div
+  class="Card"
+  (appClickOutside)="openForm(false)"
+  (appEscKey)="openForm(false)"
+>
+  <div class="Card-edit" [hidden]="showForm">
+    <button
+      mat-icon-button
+      class="small-icon-button"
+      aria-label="Редактировать"
+      (click)="openForm(true)"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+
+  <div class="Card-name" [hidden]="showForm">
+    {{ card.name }}
+  </div>
+
+  <form
+    class="Card-form"
+    [hidden]="!showForm"
+    [formGroup]="cardForm"
+    (ngSubmit)="save()"
+  >
+    <input
+      #FieldName
+      type="text"
+      class="Input"
+      formControlName="name"
+      placeholder="Название задачи..."
+    />
+
+    <div class="Card-buttons">
+      <div class="Card-add">
+        <button mat-raised-button color="primary" type="submit">
+          Изменить
+        </button>
+      </div>
+
+      <button
+        type="submit"
+        mat-icon-button
+        class="close-button"
+        aria-label="Закрыть"
+        (click)="openForm(false)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>

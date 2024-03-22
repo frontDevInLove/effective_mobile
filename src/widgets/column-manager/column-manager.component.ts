@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { ColumnAddFormComponent } from '@components/column-add-form/column-add-form.component';
 import { AsyncPipe } from '@angular/common';
-import { Column, dbService } from '@services/db.service';
+import { Card, Column, dbService } from '@services/db.service';
 import { RenameColumnComponent } from '@components/rename-column/rename-column.component';
 import { EllipsisMenuComponent } from '@components/ellipsis-menu/ellipsis-menu.component';
 import { ColumnComponent } from '../../features/column/column.component';
+import { MatIcon } from '@angular/material/icon';
+import { MatIconButton } from '@angular/material/button';
+import { ColumnCardComponent } from '@components/column-card/column-card.component';
 
 @Component({
   selector: 'app-column-manager',
@@ -15,6 +18,9 @@ import { ColumnComponent } from '../../features/column/column.component';
     RenameColumnComponent,
     EllipsisMenuComponent,
     ColumnComponent,
+    MatIcon,
+    MatIconButton,
+    ColumnCardComponent,
   ],
   templateUrl: './column-manager.component.html',
   styleUrl: './column-manager.component.scss',
@@ -39,5 +45,9 @@ export class ColumnManagerComponent {
 
   createCard({ column, name }: { column: Column; name: string }) {
     dbService.createCard(column, name);
+  }
+
+  updateCard({ card, name }: { card: Card; name: string }) {
+    dbService.updateCard(card, name);
   }
 }
