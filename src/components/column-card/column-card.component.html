@@ -3,6 +3,7 @@
   (appClickOutside)="openForm(false)"
   (appEscKey)="openForm(false)"
 >
+  <!--  Кнопка редактирования-->
   <div class="Card-edit" [hidden]="showForm">
     <button
       mat-icon-button
@@ -14,9 +15,11 @@
     </button>
   </div>
 
-  <div class="Card-name" [hidden]="showForm">
-    {{ card.name }}
-  </div>
+  <div
+    class="Card-name"
+    [hidden]="showForm"
+    [innerHTML]="card.name | newlineToParagraph"
+  ></div>
 
   <form
     class="Card-form"
@@ -24,13 +27,13 @@
     [formGroup]="cardForm"
     (ngSubmit)="save()"
   >
-    <input
+    <textarea
       #FieldName
-      type="text"
-      class="Input"
-      formControlName="name"
+      class="Textarea"
       placeholder="Название задачи..."
-    />
+      appAutoResize
+      formControlName="name"
+    ></textarea>
 
     <div class="Card-buttons">
       <div class="Card-add">

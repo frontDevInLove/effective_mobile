@@ -1,5 +1,6 @@
 <div class="ColumnManager">
   @for (column of columns$ | async; track column.name) {
+    <!--      Отображение столбцов -->
     <div class="ColumnManager-col">
       <app-column
         [column]="column"
@@ -10,6 +11,7 @@
         @if (cards$ | async; as cards) {
           @if (cards[column.id!]) {
             @for (card of cards[column.id!]; track card.id) {
+              <!-- Отображение карточек в столбцах-->
               <div class="ColumnManager-card">
                 <app-column-card
                   [card]="card"
@@ -23,6 +25,7 @@
     </div>
   }
 
+  <!--    Добавление колонки -->
   <div class="ColumnManager-col">
     <app-column-add-form (onSave)="createColumn($event)" />
   </div>

@@ -26,6 +26,10 @@ body {
   }
 }
 
+.Textarea {
+  @apply text-black border-2 p-2 rounded-lg w-full focus:outline-none transition-colors resize-none overflow-hidden;
+}
+
 .Input {
   @apply text-black border-2 p-2 rounded-lg w-full focus:outline-none transition-colors;
 }

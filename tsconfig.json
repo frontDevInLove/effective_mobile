@@ -29,6 +29,7 @@
       "@components/*": ["./src/components/*"],
       "@services/*": ["./src/services/*"],
       "@directives/*": ["./src/directives/*"],
+      "@pipes/*": ["./src/pipes/*"],
     }
   },
   "angularCompilerOptions": {

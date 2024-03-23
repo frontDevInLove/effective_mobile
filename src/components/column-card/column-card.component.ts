@@ -13,6 +13,8 @@ import { Card } from '@services/db.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClickOutsideDirective } from '@directives/click-outside.directive';
 import { EscKeyDirective } from '@directives/esc-key.directive';
+import { AutoResizeDirective } from '@directives/auto-resize.directive';
+import { NewlineToParagraphPipe } from '@pipes/newline-to-paragraph.pipe';
 
 @Component({
   selector: 'app-column-card',
@@ -24,6 +26,8 @@ import { EscKeyDirective } from '@directives/esc-key.directive';
     EscKeyDirective,
     ReactiveFormsModule,
     MatButton,
+    AutoResizeDirective,
+    NewlineToParagraphPipe,
   ],
   templateUrl: './column-card.component.html',
   styleUrl: './column-card.component.scss',
@@ -38,7 +42,10 @@ export class ColumnCardComponent {
   }>();
 
   /** Ссылка на поле ввода имени карточки */
-  @ViewChild('FieldName') private fieldName!: ElementRef<HTMLInputElement>;
+  @ViewChild('FieldName', { read: AutoResizeDirective })
+  autoResizeDirective!: AutoResizeDirective;
+  @ViewChild('FieldName', { read: ElementRef })
+  fieldNameRef!: ElementRef<HTMLInputElement>;
 
   /** Флаг видимости формы */
   public showForm = false;
@@ -69,7 +76,8 @@ export class ColumnCardComponent {
     if (willOpen) {
       this.cardForm.setValue({ name: this.card.name });
       this.cd.detectChanges();
-      this.fieldName.nativeElement.focus();
+      this.fieldNameRef.nativeElement.focus();
+      this.autoResizeDirective.adjustHeight();
     }
   }
 
