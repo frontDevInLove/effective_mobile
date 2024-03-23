@@ -4,9 +4,10 @@
     <div class="ColumnManager-col">
       <app-column
         [column]="column"
-        (onColumnUpdate)="updateColumn($event)"
-        (onColumnRemove)="removeColumn(column)"
-        (onCardCreate)="createCard($event)"
+        (updateColumn)="updateColumn($event)"
+        (removeColumn)="removeColumn(column)"
+        (createCard)="createCard($event)"
+        (removeCards)="removeCards($event)"
       >
         @if (cards$ | async; as cards) {
           @if (cards[column.id!]) {

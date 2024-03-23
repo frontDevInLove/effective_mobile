@@ -3,11 +3,14 @@
     <div class="Col-name">
       <app-rename-column
         [columnName]="column.name"
-        (onChange)="updateColumn(column, $event)"
+        (onChange)="updateColumn.emit({ column, newName: $event })"
       />
     </div>
     <div class="Col-menu">
-      <app-ellipsis-menu (onDelete)="removeColumn(column)" />
+      <app-ellipsis-menu
+        (removeColumn)="removeColumn.emit(column)"
+        (removeCards)="removeCards.emit(column)"
+      />
     </div>
   </div>
 
@@ -17,7 +20,7 @@
 
   <div class="Col-footer">
     <app-column-add-form
-      (onSave)="createCard($event)"
+      (onSave)="createCard.emit({ column, name: $event })"
       [mode]="'Transparent'"
       [inputPlaceholder]="'Ввести заголовок для этой карточки'"
       [addItemText]="'Добавить карточку'"

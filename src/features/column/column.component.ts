@@ -5,6 +5,10 @@ import { EllipsisMenuComponent } from '@components/ellipsis-menu/ellipsis-menu.c
 import { RenameColumnComponent } from '@components/rename-column/rename-column.component';
 import type { Column } from '@services/db.service';
 
+/**
+ * Компонент для отображения колонки, включая возможности для переименования,
+ * удаления колонки, добавления и удаления карточек внутри неё.
+ */
 @Component({
   selector: 'app-column',
   standalone: true,
@@ -15,29 +19,26 @@ import type { Column } from '@services/db.service';
     ColumnAddFormComponent,
   ],
   templateUrl: './column.component.html',
-  styleUrl: './column.component.scss',
+  styleUrls: ['./column.component.scss'], // Исправлено с styleUrl на styleUrls
 })
 export class ColumnComponent {
-  @Input() column!: Column; // Данные колонки
+  /** Данные колонки для отображения и взаимодействия */
+  @Input() column!: Column;
 
-  @Output() onCardCreate = new EventEmitter<{ column: Column; name: string }>(); // Создание карточки с информацией о колонке
-  @Output() onColumnUpdate = new EventEmitter<{
+  /** Событие создания новой карточки в колонке */
+  @Output() createCard = new EventEmitter<{ column: Column; name: string }>();
+
+  /** Событие обновления названия колонки */
+  @Output() updateColumn = new EventEmitter<{
     column: Column;
     newName: string;
-  }>(); // Обновление колонки с новым именем
-  @Output() onColumnRemove = new EventEmitter<Column>(); // Удаление колонки
+  }>();
+
+  /** Событие удаления колонки */
+  @Output() removeColumn = new EventEmitter<Column>();
+
+  /** Событие удаления всех карточек в колонке */
+  @Output() removeCards = new EventEmitter<Column>();
 
   constructor() {}
-
-  createCard(name: string) {
-    this.onCardCreate.emit({ column: this.column, name });
-  }
-
-  updateColumn(column: Column, newName: string) {
-    this.onColumnUpdate.emit({ column, newName });
-  }
-
-  removeColumn(column: Column) {
-    this.onColumnRemove.emit(column);
-  }
 }

@@ -2,8 +2,12 @@
   <mat-icon>more_horiz</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item (click)="delete()">
+  <button mat-menu-item (click)="deleteColumn()">
     <mat-icon>delete</mat-icon>
     <span>Удалить</span>
+  </button>
+  <button mat-menu-item (click)="deleteCards()">
+    <mat-icon>delete_sweep</mat-icon>
+    <span>Удалить карточки</span>
   </button>
 </mat-menu>

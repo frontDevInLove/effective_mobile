@@ -31,23 +31,33 @@ export class ColumnManagerComponent {
 
   constructor() {}
 
+  /** Создает новую колонку */
   createColumn(name: string) {
     dbService.createColumn(name);
   }
 
+  /** Обновляет существующую колонку */
   updateColumn({ column, newName }: { column: Column; newName: string }) {
     dbService.updateColumn(column, newName);
   }
 
+  /** Удаляет колонку */
   removeColumn(column: Column) {
     dbService.removeColumn(column);
   }
 
+  /** Создает новую карточку в колонке */
   createCard({ column, name }: { column: Column; name: string }) {
     dbService.createCard(column, name);
   }
 
+  /** Обновляет карточку */
   updateCard({ card, name }: { card: Card; name: string }) {
     dbService.updateCard(card, name);
+  }
+
+  /** Удаляет все карточки в колонке */
+  async removeCards(column: Column) {
+    await dbService.removeAllCardsInColumn(column.id!);
   }
 }

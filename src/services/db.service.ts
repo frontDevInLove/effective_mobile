@@ -48,6 +48,21 @@ export class DbService extends Dexie {
     dbService.cards.add({ name, columnId: column.id! });
   }
 
+  updateCard(card: Card, name: string) {
+    this.cards.update(card.id!, { name });
+  }
+
+  /**
+   * Удаляет все карточки, связанные с определенной колонкой.
+   * @param columnId Идентификатор колонки, для которой нужно удалить все карточки.
+   * @returns Промис без возвращаемого значения, указывающий на завершение операции.
+   */
+  async removeAllCardsInColumn(columnId: number) {
+    const cards = await this.cards.where({ columnId }).toArray();
+    const ids = cards.map((card) => card.id!);
+    await this.cards.bulkDelete(ids);
+  }
+
   getCards() {
     return of(null).pipe(
       switchMap(() => liveQuery(() => this.cards.toArray())),
@@ -72,10 +87,6 @@ export class DbService extends Dexie {
       },
       {} as { [key in Card['columnId']]: Card[] },
     );
-  }
-
-  updateCard(card: Card, name: string) {
-    this.cards.update(card.id!, { name });
   }
 }
 

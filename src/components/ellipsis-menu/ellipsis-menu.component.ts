@@ -11,8 +11,13 @@ import { MatIconButton } from '@angular/material/button';
   styleUrl: './ellipsis-menu.component.scss',
 })
 export class EllipsisMenuComponent {
-  @Output() onDelete = new EventEmitter<void>();
-  delete() {
-    this.onDelete.emit();
+  @Output() removeColumn = new EventEmitter<void>();
+  @Output() removeCards = new EventEmitter<void>();
+  deleteColumn() {
+    this.removeColumn.emit();
+  }
+
+  deleteCards() {
+    this.removeCards.emit();
   }
 }
